@@ -20,16 +20,16 @@ routes.post("/signup", async (req, res) => {
     } catch (error) {
         // error check for input fields
         if (error.code === 11000) {
-            validate.displayMessage(res, 400, false, "user already exists")
+            res.status(400).json(validate.displayMessage(false, "user already exists"))
         }
         else if (error.errors.username) {
-            validate.displayMessage(res, 400, false, "username field can not be empty")
+            res.status(400).json(validate.displayMessage(false, "username field can not be empty"))
         }
         else if (error.errors.email) {
-            validate.displayMessage(res, 400, false, "incorrect format. for email use example@example.com pattern")
+            res.status(400).json(validate.displayMessage(false, "incorrect format. for email use example@example.com pattern"))
         } 
         else if (error.errors.password) {
-            validate.displayMessage(res, 400, false, "password field can not be empty")
+            res.status(400).json(validate.displayMessage(false, "password field can not be empty"))
         } else {
             res.status(400).send({ message: error.message })
         }
@@ -47,19 +47,19 @@ routes.post("/login", async (req, res) => {
         // check if user login information is valid
         // if email or username and password are correct display success message
         if ((findByUsername || findByEmail) && findByPassword) {
-            validate.displayMessage(res, 200, true, `User logged in successfully ${req.body.email || req.body.username} `)
+            res.status(200).json(validate.displayMessage(true, `User logged in successfully ${req.body.email || req.body.username} `))
         }
         // if password dont match email/username
         else if (!findByPassword && (findByUsername || findByEmail)) {
-            validate.displayMessage(res, 400, false, "invalid password")
+            res.status(400).json(validate.displayMessage(false, "invalid password"))
         }
         // if email/username dont match the password
         else if ((!findByUsername || !findByEmail) && findByPassword) {
-            validate.displayMessage(res, 400,false, "invalid username or email")
+            res.status(400).json(validate.displayMessage(false, "invalid username or email"))
         }
           // if email/username and password are wrong display the error message
         else if ((!findByUsername || !findByEmail) && !findByPassword) {
-            validate.displayMessage(res, 400,false, "invalid username, email and password")
+            res.status(400).json(validate.displayMessage(false, "invalid username, email and password"))
         }
 
     } catch (error) {
