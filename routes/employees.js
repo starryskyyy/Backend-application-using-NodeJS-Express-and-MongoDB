@@ -29,7 +29,7 @@ routes.get("/employees", async (req, res) => {
 routes.post("/employees", async (req, res) => {
 
     try {
-        
+
         const newEmployee = new EmployeeModel(req.body)
         const employee = await newEmployee.save()
         res.status(201).send(employee)
@@ -75,13 +75,13 @@ routes.get("/employees/:eid", async (req, res) => {
     }
     catch (error) {
         // if employee was not found
-        if(error.kind === "ObjectId"){
+        if (error.kind === "ObjectId") {
             res.status(400).send({ message: `employee with id: ${req.params.eid} was not found` });
         }
-        else{
+        else {
             res.status(400).json({ message: error.message })
         }
-        
+
     }
 })
 
@@ -101,10 +101,10 @@ routes.put("/employees/:eid", async (req, res) => {
         }
     } catch (error) {
         // if employee was not found
-        if(error.kind === "ObjectId"){
+        if (error.kind === "ObjectId") {
             res.status(400).send({ message: `employee with id: ${req.params.eid} was not found` });
         }
-        else{
+        else {
             res.status(400).json({ message: error.message })
         }
     }
@@ -115,13 +115,14 @@ routes.delete("/employees", async (req, res) => {
     try {
         const deletedEmployee = await EmployeeModel.findByIdAndDelete(req.query.eid)
         // if employee exists delete record
-        if (deletedEmployee) {
-            res.status(204).send({message: `employee with id ${req.query.eid} was successfully deleted`})
-        } else {
+        if (!deletedEmployee) {
             // if employee was not found
             res.status(400).send({ message: `employee with id ${req.query.eid} was not found` })
-        }
 
+        } else {
+            res.status(204).send(deletedBook)
+        }
+        
     } catch (error) {
         res.status(400).send({ message: error.message })
     }
