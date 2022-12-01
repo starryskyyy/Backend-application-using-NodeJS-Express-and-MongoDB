@@ -21,6 +21,10 @@ const SERVER_PORT = process.env.PORT || 3000
 const cors = require("cors");
 app.use(cors({ credentials: true, origin: "http://localhost:3000/" }));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 app.use(express.json())
 app.use(express.urlencoded())
 
