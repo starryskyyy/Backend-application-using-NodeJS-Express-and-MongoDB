@@ -31,6 +31,8 @@ app.route("/")
         res.send("<h1>Assignment 2<br>Elizaveta Vygovskaia<br>101337015</h1>")
     })
 
+app.set("port", SERVER_PORT)
+
 app.listen(SERVER_PORT, () =>{
     console.log(`Server running at http://localhost:${SERVER_PORT}/`)
 })
