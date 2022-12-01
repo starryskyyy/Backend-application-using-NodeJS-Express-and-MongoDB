@@ -12,7 +12,14 @@
     "type": "git",
     "url": "git+https://github.com/starryskyyy/101337015_COMP3123_Assignment1.git"
   },
-  "keywords": ["API", "Mongoose", "MongoDB", "routes", "express", "nodeJS"],
+  "keywords": [
+    "API",
+    "Mongoose",
+    "MongoDB",
+    "routes",
+    "express",
+    "nodeJS"
+  ],
   "author": "Elizaveta Vygovskaia",
   "license": "ISC",
   "bugs": {
@@ -20,6 +27,7 @@
   },
   "homepage": "https://github.com/starryskyyy/101337015_COMP3123_Assignment1#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^6.6.5",
     "nodemon": "^2.0.20"
