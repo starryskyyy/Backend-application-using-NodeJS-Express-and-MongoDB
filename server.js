@@ -28,7 +28,7 @@ app.use("/api/emp/", employeesRoutes)
  
 app.route("/")
     .get((req, res) => {
-        res.send("<h1>Assignment 1<br>Elizaveta Vygovskaia<br>101337015</h1>")
+        res.send("<h1>Assignment 2<br>Elizaveta Vygovskaia<br>101337015</h1>")
     })
 
 app.listen(SERVER_PORT, () =>{
