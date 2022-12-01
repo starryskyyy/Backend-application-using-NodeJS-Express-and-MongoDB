@@ -16,7 +16,7 @@ mongoose.connect(DB_CONNECTION_STRING, {
 
 const app = express()
 
-const SERVER_PORT = process.env.port || 3000
+const SERVER_PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(express.urlencoded())
@@ -31,7 +31,7 @@ app.route("/")
         res.send("<h1>Assignment 2<br>Elizaveta Vygovskaia<br>101337015</h1>")
     })
 
-app.set("port", SERVER_PORT)
+
 
 app.listen(SERVER_PORT, () =>{
     console.log(`Server running at http://localhost:${SERVER_PORT}/`)
