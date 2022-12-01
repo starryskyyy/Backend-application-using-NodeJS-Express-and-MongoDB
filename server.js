@@ -1,8 +1,8 @@
 const express = require("express")
-const http = require('http');
 
 const userRoutes = require("./routes/users")
 const employeesRoutes = require("./routes/employees")
+
 
 const mongoose = require("mongoose")
 
@@ -16,7 +16,7 @@ mongoose.connect(DB_CONNECTION_STRING, {
 
 const app = express()
 
-const SERVER_PORT = 3001
+const SERVER_PORT = process.env.port || 3000
 
 app.use(express.json())
 app.use(express.urlencoded())
