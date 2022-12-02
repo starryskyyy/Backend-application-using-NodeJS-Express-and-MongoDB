@@ -20,16 +20,16 @@ routes.post("/signup", async (req, res) => {
     } catch (error) {
         // error check for input fields
         if (error.code === 11000) {
-            res.status(400).json(validate.displayMessage(false, "user already exists"))
+            res.status(400).json(validate.displayMessage(false, "User already exists"))
         }
         else if (error.errors.username) {
-            res.status(400).json(validate.displayMessage(false, "username field can not be empty"))
+            res.status(400).json(validate.displayMessage(false, "Username field can not be empty"))
         }
         else if (error.errors.email) {
-            res.status(400).json(validate.displayMessage(false, "incorrect format. for email use example@example.com pattern"))
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For the email use example@example.com pattern"))
         } 
         else if (error.errors.password) {
-            res.status(400).json(validate.displayMessage(false, "password field can not be empty"))
+            res.status(400).json(validate.displayMessage(false, "Password field can not be empty"))
         } else {
             res.status(400).send({ message: error.message })
         }

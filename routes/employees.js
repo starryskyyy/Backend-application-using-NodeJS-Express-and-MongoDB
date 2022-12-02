@@ -40,17 +40,17 @@ routes.post("/employees", async (req, res) => {
             res.status(400).json(validate.displayMessage(false, `employee with email: ${req.body.email} already exists`))
         }
         else if (error.errors.first_name || error.errors.last_name) {
-            res.status(400).json(validate.displayMessage(false, "incorrect format. for first name and last name use letters only"))
+            res.status(400).json(validate.displayMessage(false, "Incorrect format."))
         }
         else if (error.errors.email) {
-            res.status(400).json(validate.displayMessage(false, "incorrect format. for email use example@example.com pattern"))
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For email use example@example.com pattern"))
         }
 
         else if (error.errors.gender) {
-            res.status(400).json(validate.displayMessage(false, "incorrect gender value. for gender use only male, female or other"))
+            res.status(400).json(validate.displayMessage(false, "Please select gender"))
         }
         else if (error.errors.salary) {
-            res.status(400).json(validate.displayMessage(false, "incorrect format. for salary use digits only"))
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For salary use digits only"))
         }
         else {
             res.status(400).send({ message: error.message })
