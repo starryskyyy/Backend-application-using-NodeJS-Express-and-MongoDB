@@ -91,10 +91,23 @@ routes.put("/employees/:eid", async (req, res) => {
     } catch (error) {
         // if employee was not found
         if (error.kind === "ObjectId") {
-            res.status(400).send({ message: `employee with id: ${req.params.eid} was not found` });
+            res.status(400).send({ message: `Employee with id: ${req.params.eid} was not found` });
+        }
+        else if (error.errors.first_name || error.errors.last_name) {
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For the first and last name use letters only"))
+        }
+        else if (error.errors.email) {
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For email use example@example.com pattern"))
+        }
+
+        else if (error.errors.gender) {
+            res.status(400).json(validate.displayMessage(false, "Please select gender"))
+        }
+        else if (error.errors.salary) {
+            res.status(400).json(validate.displayMessage(false, "Incorrect format. For salary use digits only"))
         }
         else {
-            res.status(400).json({ message: error.message })
+            res.status(400).send({ message: error.message })
         }
     }
 })
