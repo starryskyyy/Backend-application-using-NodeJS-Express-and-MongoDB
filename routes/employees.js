@@ -100,16 +100,16 @@ routes.put("/employees/:eid", async (req, res) => {
 })
 
 // delete employee
-routes.delete("/employees", async (req, res) => {
+routes.delete("/employees/:id", async (req, res) => {
     try {
 
-        const deletedEmployee = await EmployeeModel.findByIdAndDelete(req.query.eid)
+        const deletedEmployee = await EmployeeModel.findByIdAndDelete(req.params.id)
         res.status(204).send(deletedEmployee)
 
     } catch (error) {
         // if employee was not found
         if (error.kind === "ObjectId") {
-            res.status(400).send({ message: `employee with id: ${req.query.eid} was not found` });
+            res.status(400).send({ message: `employee with id: ${req.params.id} was not found` });
         }
         else {
             res.status(400).json({ message: error.message })
