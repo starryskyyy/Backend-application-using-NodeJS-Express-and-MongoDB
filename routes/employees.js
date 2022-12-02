@@ -37,7 +37,7 @@ routes.post("/employees", async (req, res) => {
     } catch (error) {
         // if employee is already exists
         if (error.code === 11000) {
-            res.status(400).json(validate.displayMessage(false, `employee with email: ${req.body.email} already exists`))
+            res.status(400).json(validate.displayMessage(false, `Employee with email: ${req.body.email} already exists`))
         }
         else if (error.errors.first_name || error.errors.last_name) {
             res.status(400).json(validate.displayMessage(false, "Incorrect format. For the first and last name use letters only"))
