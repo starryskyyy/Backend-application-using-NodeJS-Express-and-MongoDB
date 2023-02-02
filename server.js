@@ -6,7 +6,7 @@ const employeesRoutes = require("./routes/employees")
 const mongoose = require("mongoose")
 console.log(process.env.MONGODB_URL)
 // create database connection
-const DB_CONNECTION_STRING = process.env.MONGODB_URL
+const DB_CONNECTION_STRING = "mongodb+srv://elizaveta_vy:amDJzzxqQDkIRHEr@cluster0.lpjzsdr.mongodb.net/101337015_assignment_1?retryWrites=true&w=majority"
 
 mongoose.connect(DB_CONNECTION_STRING, {
     useNewUrlParser: true,
