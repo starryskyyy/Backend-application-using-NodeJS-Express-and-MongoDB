@@ -1,13 +1,13 @@
+require("dotenv").config();
 const express = require("express")
-
 const userRoutes = require("./routes/users")
 const employeesRoutes = require("./routes/employees")
 
-
 const mongoose = require("mongoose")
-
+console.log(process.env.MONGODB_URL)
 // create database connection
-const DB_CONNECTION_STRING = "mongodb+srv://101337015_Elizaveta:12345@cluster0.iugv30a.mongodb.net/101337015_assignment_1?retryWrites=true&w=majority"
+const DB_CONNECTION_STRING = process.env.MONGODB_URL
+
 mongoose.connect(DB_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true
