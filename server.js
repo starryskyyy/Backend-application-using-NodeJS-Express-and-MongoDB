@@ -15,6 +15,7 @@ mongoose.connect(DB_CONNECTION_STRING, {
 
 const app = express()
 
+const SERVER_PORT = process.env.PORT || 3000
 
 const cors = require("cors");
 app.use(cors({ credentials: true, origin: "*" }));
@@ -34,6 +35,6 @@ app.route("/")
 
 
 
-app.listen(process.env.PORT || 3000, () =>{
-    console.log(`Server running at http://localhost:${process.env.PORT || 3000}/`)
+app.listen(SERVER_PORT, () =>{
+    console.log(`Server running at http://localhost:${SERVER_PORT}/`)
 })
